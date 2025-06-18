@@ -4,25 +4,24 @@ This project explores geometric relationships between multi-view images by estim
 
 The work is divided into two phases:
 
-- 📌 **Planar Projection via Manual Correspondence**
-- ⚙️ **Automated Geometry Estimation using HLOC**
+- **Manual Feature Extraction and Matching**
+- **Automated Feature Extraction and Matching**
 
 Each phase is documented in its own subfolder with implementation code, experiments, and analysis results.
 
 ---
 
-## 🧭 Project Structure
+## Project Structure
 
 | Folder | Description |
 |--------|-------------|
 | [`planar-projection-manual/`](./planar-projection-manual/) | Milestone 1 – Homography & Fundamental matrix estimation using manually selected keypoints |
-| [`geometry-pipeline-auto/`](./geometry-pipeline-auto/) | Milestone 2 – Automated feature extraction & epipolar geometry validation using SuperPoint, SuperGlue, DISK, and LightGlue |
-| `data/` | (Optional) Shared CSV files or sample input |
+| [`auto-feature-extraction-matching/`](./auto-feature-extraction-matching/) | Milestone 2 – Automated feature extraction & epipolar geometry validation using SuperPoint, SuperGlue, DISK, and LightGlue |
 | `requirements.txt` | Python environment requirements |
 
 ---
 
-## 🔧 Setup Instructions
+## Setup Instructions
 
 Make sure you have Python 3.8+ and pip installed.
 
