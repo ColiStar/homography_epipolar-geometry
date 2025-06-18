@@ -1,4 +1,4 @@
-# Planar Homography and Epipolar Geometry
+# Manual Feature Extraction and Matching 
 
 ## Objective
 
@@ -31,15 +31,16 @@ These points were saved in CSV format and visualized to ensure spatial alignment
 | 1842.0   | 2167.0   | 2366.0   | 2798.0   | 2384.0   | 2635.0   |
 | 1413.0   | 1440.0   | 1168.0   | 1298.0   | 1447.0   | 1318.0   |
 | 1714.0   | 1398.0   | 2036.0   | 1316.0   | 2104.0   | 1256.0   |
+
 We used these correspondences for homography and fundamental matrix estimation.
 
 ![Selected Points on Images](./images/manual_points_visualization.png)
 
 ---
 
-## 🔄 Homography Estimation
+## Homography Estimation
 
-We used OpenCV's `findHomography()` with RANSAC to compute the homography matrices $begin:math:text$ H_{AB} $end:math:text$ and $begin:math:text$ H_{AC} $end:math:text$.
+We used OpenCV's `findHomography()` with RANSAC to compute the homography matrices
 
 **H_AB =**
 
@@ -59,8 +60,9 @@ We used OpenCV's `findHomography()` with RANSAC to compute the homography matric
 
 ### Analysis
 
-- In $begin:math:text$ H_{AB} $end:math:text$, the large values in the translation components (−6476.98, −4753.41) indicate a significant shift in viewpoint. The top-left 2×2 submatrix shows strong scaling and shearing, suggesting notable geometric deformation. The third row confirms the presence of perspective distortion.
-- In contrast, $begin:math:text$ H_{AC} $end:math:text$ reflects a moderate transformation. The translation values are smaller (−876.63, −653.94), and the matrix is closer to an affine transform with very small perspective terms, implying that Image C was taken from a more similar viewpoint to A.
+- In H_AB, the large values in the translation components (−6476.98, −4753.41) indicate a significant shift in viewpoint. The top-left 2×2 submatrix shows strong scaling and shearing, suggesting notable geometric deformation. The third row confirms the presence of perspective distortion.
+- In contrast, H_AC values are smaller (−876.63, −653.94), and the matrix is closer to an affine transform with very small perspective terms, implying that Image C was taken from a more similar viewpoint to A.
+- In summary, the two homography matrices reflect different degrees of viewpoint change and transformation complexity between image A and the other views. H_AB represents a more dramatic transformation involving noticeable perspective, while H_AC indicates a relatively gentle change in camera pose.
 
 We validated both matrices by selecting a new point in Image A and projecting it to Images B and C. The projected results aligned closely with true points.
 
@@ -68,9 +70,9 @@ We validated both matrices by selecting a new point in Image A and projecting it
 
 ---
 
-## 📐 Fundamental Matrix Estimation
+## Fundamental Matrix Estimation
 
-We used OpenCV's `findFundamentalMat()` with RANSAC to estimate $begin:math:text$ F_{AB} $end:math:text$.
+We used OpenCV's `findFundamentalMat()` with RANSAC to estimate.
 
 **F_AB =**
 
@@ -79,23 +81,24 @@ We used OpenCV's `findFundamentalMat()` with RANSAC to estimate $begin:math:text
 | 1.56×10⁻⁷     | -1.56×10⁻⁷    | 4.04×10⁻⁴     |
 | 1.12×10⁻⁷     | 3.30×10⁻⁹     | -4.12×10⁻⁴    |
 | -1.55×10⁻³    | 7.24×10⁻⁴     | 1.00          |
+
 To validate this matrix, we selected a point in Image A, computed its epipolar line in Image B, and marked the true match.
 
 ![Epipolar Line](./images/epipolar_line_validation.png)
 
-- ✅ Green line: predicted epipolar line  
-- ✅ Red dot: manually selected true corresponding point  
+- Green line: predicted epipolar line  
+- Red dot: manually selected true corresponding point  
 
-The red dot lies closely along the predicted line, visually confirming the correctness of $begin:math:text$ F_{AB} $end:math:text$.
+The red dot lies closely along the predicted line, visually confirming the correctness of F_AB.
 
 ---
 
-## 🔁 Cross-View Consistency Check
+## Cross-View Consistency Check
 
 To evaluate multi-view consistency:
 
-1. A point in Image A was projected into Image C using $begin:math:text$ H_{AC} $end:math:text$.
-2. Epipolar lines in Image B were computed using $begin:math:text$ F_{AB} $end:math:text$ and $begin:math:text$ F_{CB} $end:math:text$.
+1. A point in Image A was projected into Image C using H_AC.
+2. Epipolar lines in Image B were computed using F_AB and F_CB.
 3. Their intersection was compared to the manually selected true match in B.
 
 ### Results
@@ -110,7 +113,7 @@ Despite a ~5 pixel error, the epipolar lines nearly intersect at the annotated g
 
 ---
 
-## 💻 Code Summary
+## Code Summary
 
 We implemented the following:
 
@@ -121,6 +124,6 @@ We implemented the following:
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 
 This milestone provided hands-on experience with manual point selection, transformation estimation, and multi-view geometry validation. The homography matrices revealed differences in viewpoint and planar alignment, while the fundamental matrices accurately described epipolar constraints. All observations align with theoretical expectations and support the use of these tools in more complex automated pipelines.
