@@ -19,11 +19,4 @@ Each phase is documented in its own subfolder with implementation code, experime
 | [`auto-feature-extraction-matching/`](./auto-feature-extraction-matching/) | Milestone 2 – Automated feature extraction & epipolar geometry validation using SuperPoint, SuperGlue, DISK, and LightGlue |
 | `requirements.txt` | Python environment requirements |
 
----
 
-## Setup Instructions
-
-Make sure you have Python 3.8+ and pip installed.
-
-```bash
-pip install -r requirements.txt
