@@ -22,19 +22,19 @@ This project implements an automated feature extraction and matching pipeline us
 ### img_a ↔ img_b
 - Valid matches: 627  
 - Mean error: **1.45**, Max error: **3.61**  
-- ![homography_img_a_b](images/homography_img_a_b.png)  
+- ![homography_img_a_b](image/homography_img_a_b.png)  
 **Notes**: Accurate near center; slight drift at boundaries.
 
 ### img_a ↔ img_c
 - Valid matches: 834  
 - Mean error: **1.70**, Max error: **3.42**  
-- ![homography_img_a_c](images/homography_img_a_c.png)  
+- ![homography_img_a_c](image/homography_img_a_c.png)  
 **Notes**: Reliable central alignment; corners affected by viewpoint change.
 
 ### img_b ↔ img_c
 - Valid matches: 1525  
 - Mean error: **1.71**, Max error: **3.75**  
-- ![homography_img_b_c](images/homography_img_b_c.png)  
+- ![homography_img_b_c](image/homography_img_b_c.png)  
 
 All homographies produced visually and numerically consistent results with low mean reprojection errors (< 2.0).
 
@@ -43,13 +43,13 @@ All homographies produced visually and numerically consistent results with low m
 ## 3. Fundamental Matrix & Epipolar Validation
 
 ### img_a ↔ img_b
-- ![fundamental_img_a_b](images/fundamental_img_a_b.png)
+- ![fundamental_img_a_b](image/fundamental_img_a_b.png)
 
 ### img_a ↔ img_c
-- ![fundamental_img_a_c](images/fundamental_img_a_c.png)
+- ![fundamental_img_a_c](image/fundamental_img_a_c.png)
 
 ### img_b ↔ img_c
-- ![fundamental_img_b_c](images/fundamental_img_b_c.png)
+- ![fundamental_img_b_c](image/fundamental_img_b_c.png)
 
 **Observations**:
 - All epipolar lines are horizontal, indicating lateral camera motion.
@@ -64,22 +64,22 @@ All homographies produced visually and numerically consistent results with low m
 ### img_a ↔ img_b (DISK + LightGlue)
 - Matches: 230  
 - Mean error: **1.54**, Max: **2.97**  
-- ![disk_homography_img_a_b](images/disk_homography_img_a_b.png)  
-- ![disk_fundamental_img_a_b](images/disk_fundamental_img_a_b.png)  
+- ![disk_homography_img_a_b](image/disk_homography_img_a_b.png)  
+- ![disk_fundamental_img_a_b](image/disk_fundamental_img_a_b.png)  
 **Notes**: Good perspective modeling, consistent epipolar lines.
 
 ### img_a ↔ img_c
 - Matches: 441  
 - Mean error: **1.56**, Max: **2.85**  
-- ![disk_homography_img_a_c](images/disk_homography_img_a_c.png)  
-- ![disk_fundamental_img_a_c](images/disk_fundamental_img_a_c.png)  
+- ![disk_homography_img_a_c](image/disk_homography_img_a_c.png)  
+- ![disk_fundamental_img_a_c](image/disk_fundamental_img_a_c.png)  
 **Notes**: Accurate alignment, well-behaved epipolar geometry.
 
 ### img_b ↔ img_c
 - Matches: 2116  
 - Mean error: **1.60**, Max: **3.96**  
-- ![disk_homography_img_b_c](images/disk_homography_img_b_c.png)  
-- ![disk_fundamental_img_b_c](images/disk_fundamental_img_b_c.png)  
+- ![disk_homography_img_b_c](image/disk_homography_img_b_c.png)  
+- ![disk_fundamental_img_b_c](image/disk_fundamental_img_b_c.png)  
 **Notes**: Excellent geometric consistency; robust match quality.
 
 ---
